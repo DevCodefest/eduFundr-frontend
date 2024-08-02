@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Provider  from '../wagmi';
 import {
   Inter,
   Space_Grotesk,
@@ -38,20 +39,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${space.variable} ${hanken.variable} ${playfair.variable}`}
-    >
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </head>
-      <body className={`${inter.className} bg-black-1 text-white`}>
-        <div>
-          <Navbar />
-          <div className="bg-black-1">{children}</div>
-        </div>
-      </body>
-    </html>
+          <html
+            lang="en"
+            className={`${space.variable} ${hanken.variable} ${playfair.variable}`}
+          >
+            <head>
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <link rel="icon" href="/favicon.ico" />
+            </head>
+            <body className={`${inter.className} bg-black-1 text-white`}>
+              <Provider>
+                <div>
+                  <Navbar />
+                  <div className="bg-black-1">{children}</div>
+                </div>
+              </Provider>
+            </body>
+          </html>
   );
 }
